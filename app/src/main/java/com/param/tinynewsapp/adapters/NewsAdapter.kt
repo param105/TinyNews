@@ -24,7 +24,7 @@ class NewsAdapter(ctx: Context, private val dataModelArrayList: ArrayList<NewsMo
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.MyViewHolder {
-        val view = inflater.inflate(R.layout.news_item_view, parent, false)
+        val view = inflater.inflate(R.layout.news_item_view_big, parent, false)
         return MyViewHolder(view)
     }
 

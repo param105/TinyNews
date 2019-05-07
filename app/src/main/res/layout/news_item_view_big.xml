@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/iv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="H,16:9"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/name"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="#DE000000"
+                app:layout_constraintTop_toBottomOf="@+id/iv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/country" />
+
+    <TextView
+            android:id="@+id/country"
+            android:text="country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#8A000000"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/city" android:layout_marginTop="8dp"/>
+
+    <TextView
+            android:id="@+id/city"
+            android:text="CITY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="#DE000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" app:layout_constraintTop_toBottomOf="@+id/name"
+            android:layout_marginTop="8dp"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
