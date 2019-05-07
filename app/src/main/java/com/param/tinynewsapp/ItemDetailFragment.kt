@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.param.tinynewsapp.dummy.DummyContent
 import com.param.tinynewsapp.model.NewsModelRecycler
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_item_detail.*
 import kotlinx.android.synthetic.main.item_detail.view.*
 
@@ -33,6 +34,8 @@ class ItemDetailFragment : Fragment() {
                 // to load content from a content provider.
                 item = NewsModelRecycler.ITEM_MAP[it.getString(ARG_ITEM_ID)]
                 activity?.toolbar_layout?.title = item?.name
+                //activity?.toolbar_imageview?.setImageBitmap(Picasso.get().load(item?.imgURL))
+                Picasso.get().load(item?.imgURL).into(activity?.toolbar_imageview)
             }
         }
     }
@@ -46,6 +49,7 @@ class ItemDetailFragment : Fragment() {
         // Show the dummy content as text in a TextView.
         item?.let {
             rootView.item_detail.text = it.country
+
         }
 
         return rootView
