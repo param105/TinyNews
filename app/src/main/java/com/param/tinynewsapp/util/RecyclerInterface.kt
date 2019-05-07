@@ -10,6 +10,7 @@ interface RecyclerInterface {
 
     companion object {
 
-        val JSONURL = "https://demonuts.com/Demonuts/JsonTest/Tennis/"
+       // val JSONURL = "https://demonuts.com/Demonuts/JsonTest/Tennis/"
+        val JSONURL = "https://newsapi.org/v2/top-headlines?country=in&apiKey=de63571ebc714ae6828e37c65bb712bf"
     }
 }

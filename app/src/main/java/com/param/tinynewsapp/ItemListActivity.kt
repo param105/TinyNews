@@ -25,6 +25,11 @@ import com.param.tinynewsapp.util.RecyclerInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.app.ProgressDialog
+import com.param.tinynewsapp.model.Article
+import com.param.tinynewsapp.model.NewsList
+import com.param.tinynewsapp.util.ApiService
+import com.param.tinynewsapp.util.RetrofitClient
 
 
 /**
@@ -43,6 +48,7 @@ class ItemListActivity : AppCompatActivity() {
     private var twoPane: Boolean = false
     private var recyclerView: RecyclerView? = null
     private var newsAdapter: NewsAdapter? = null
+    private val newsList: ArrayList<Article>? = ArrayList<Article>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,13 +72,82 @@ class ItemListActivity : AppCompatActivity() {
         }
 
         //setupRecyclerView(item_list)
-        fetchJSON()
+        //fetchJSON()
+        fetchNewsJSON()
     }
 
-    private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, twoPane)
+    /**
+     * Function to fetch JSON
+     * Used Pcasso use fetch photo from json
+     */
+    private fun fetchNewsJSON() {
+
+        val api:ApiService = RetrofitClient.getApiService()
+        /**
+         * Calling JSON
+         */
+      val call:Call <NewsList>  = api.newsListJSON
+
+        /**
+         * Enqueue Callback will be call when get response...
+         */
+
+        call.enqueue(object : Callback<NewsList> {
+            override fun onFailure(call: Call<NewsList>?, t: Throwable?) {
+                //Toast.makeText(this, t!!.message,Toast.LENGTH_SHORT).show()
+            }
+
+
+            override fun onResponse(call: Call<NewsList>?, response: Response<NewsList>?) {
+                val data : NewsList? = response!!.body()
+                if(response.isSuccessful) {
+                    newsList?.addAll(data?.articles!!)
+                    writeNewsRecycler()
+                }else{
+                    Toast.makeText(this@ItemListActivity, "Fetching issue",Toast.LENGTH_SHORT).show()
+
+
+                }
+            }
+
+
+        })
+
+
     }
 
+   private fun writeNewsRecycler(){
+
+               val modelRecyclerArrayList = ArrayList<NewsModelRecycler.NewsModel>()
+               val dataArray = newsList
+
+               for (i in 0 until dataArray?.size!!) {
+
+                   val modelRecycler = NewsModelRecycler.NewsModel(null,null,null,null)
+                   val articleObj = newsList?.get(i)
+
+                   modelRecycler.imgURL = articleObj?.urlToImage
+                   modelRecycler.name = articleObj?.title
+                   modelRecycler.country = articleObj?.author
+                   modelRecycler.city = articleObj?.publishedAt
+
+                   modelRecyclerArrayList.add(modelRecycler)
+                   NewsModelRecycler.addItem(modelRecycler)
+
+               }
+
+               newsAdapter = NewsAdapter(this,this,false, modelRecyclerArrayList)
+               recyclerView?.setAdapter(newsAdapter)
+               recyclerView?.setLayoutManager(
+                   LinearLayoutManager(
+                       applicationContext,
+                       RecyclerView.VERTICAL,
+                       false
+                   )
+               )
+
+
+    }
 
     /**
      * Function to fetch JSON
