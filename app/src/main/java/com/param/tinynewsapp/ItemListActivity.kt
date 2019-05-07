@@ -122,12 +122,12 @@ class ItemListActivity : AppCompatActivity() {
             val obj = JSONObject(response)
             if (obj.optString("status") == "true") {
 
-                val modelRecyclerArrayList = ArrayList<NewsModelRecycler>()
+                val modelRecyclerArrayList = ArrayList<NewsModelRecycler.NewsModel>()
                 val dataArray = obj.getJSONArray("data")
 
                 for (i in 0 until dataArray.length()) {
 
-                    val modelRecycler = NewsModelRecycler()
+                    val modelRecycler = NewsModelRecycler.NewsModel(null,null,null,null)
                     val dataobj = dataArray.getJSONObject(i)
 
                     modelRecycler.imgURL = dataobj.getString("imgURL")
@@ -136,10 +136,11 @@ class ItemListActivity : AppCompatActivity() {
                     modelRecycler.city = dataobj.getString("city")
 
                     modelRecyclerArrayList.add(modelRecycler)
+                    NewsModelRecycler.addItem(modelRecycler)
 
                 }
 
-                newsAdapter = NewsAdapter(this, modelRecyclerArrayList)
+                newsAdapter = NewsAdapter(this,this,false, modelRecyclerArrayList)
                 recyclerView?.setAdapter(newsAdapter)
                 recyclerView?.setLayoutManager(
                     LinearLayoutManager(
