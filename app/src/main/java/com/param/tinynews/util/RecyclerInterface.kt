@@ -1,4 +1,4 @@
-package com.param.tinynewsapp.util
+package com.param.tinynews.util
 
 import retrofit2.Call
 import retrofit2.http.GET

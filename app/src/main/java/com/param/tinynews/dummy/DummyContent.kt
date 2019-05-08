@@ -1,4 +1,4 @@
-package com.param.tinynewsapp.dummy
+package com.param.tinynews.dummy
 
 import java.util.ArrayList
 import java.util.HashMap

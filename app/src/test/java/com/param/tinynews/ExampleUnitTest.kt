@@ -1,4 +1,4 @@
-package com.param.tinynewsapp
+package com.param.tinynews
 
 import org.junit.Test
 

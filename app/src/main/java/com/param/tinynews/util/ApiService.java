@@ -1,6 +1,6 @@
-package com.param.tinynewsapp.util;
+package com.param.tinynews.util;
 
-import com.param.tinynewsapp.model.NewsList;
+import com.param.tinynews.model.NewsList;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
