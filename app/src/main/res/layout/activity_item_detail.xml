@@ -9,6 +9,8 @@
         tools:context=".ItemDetailActivity"
         tools:ignore="MergeRootFrame">
 
+
+
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
@@ -47,12 +49,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <androidx.core.widget.NestedScrollView
             android:id="@+id/item_detail_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
             android:background="#003A2F2F"/>
 
 
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

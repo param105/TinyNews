@@ -1,10 +1,14 @@
 package com.param.tinynews
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
 import com.param.tinynews.model.NewsModelRecycler
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_item_detail.*
@@ -34,7 +38,7 @@ class ItemDetailFragment : Fragment() {
 
                 item = NewsModelRecycler.ITEM_MAP[it.get(ARG_ITEM_ID)]
                 activity?.toolbar_layout?.title = item?.title
-                Picasso.get().load(item?.imgURL).into(activity?.toolbar_imageview)
+               Picasso.get().load(item?.imgURL).into(activity?.toolbar_imageview)
             }
         }
     }
@@ -51,7 +55,28 @@ class ItemDetailFragment : Fragment() {
 
         }
 
+        var moreButton = rootView.findViewById<Button>(R.id.more_button)
+
+        moreButton.setOnClickListener(moreButtonClickListener)
         return rootView
+    }
+
+    val moreButtonClickListener = View.OnClickListener { view ->
+        when(view?.id){
+            R.id.more_button -> showBrowserActivity()
+
+        }
+    }
+
+    private fun showBrowserActivity() {
+        Toast.makeText(this.activity?.applicationContext,"more button clicked", Toast.LENGTH_LONG).show()
+        val url:String? = item?.siteURL
+        val builder:CustomTabsIntent.Builder = CustomTabsIntent.Builder()
+        builder.setToolbarColor(resources.getColor(R.color.colorPrimary))
+        var customTabsIntent:CustomTabsIntent = builder?.build()
+        customTabsIntent.launchUrl(this.context, Uri.parse(url))
+
+
     }
 
     companion object {
