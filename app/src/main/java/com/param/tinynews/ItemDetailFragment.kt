@@ -77,6 +77,7 @@ class ItemDetailFragment : Fragment() {
         customTabsIntent.launchUrl(this.context, Uri.parse(url))
 
 
+
     }
 
     companion object {
