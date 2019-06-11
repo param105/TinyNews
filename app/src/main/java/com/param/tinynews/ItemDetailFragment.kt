@@ -43,6 +43,9 @@ class ItemDetailFragment : Fragment() {
         }
     }
 
+    /***
+     * creates view at initial setup phase
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,11 +59,13 @@ class ItemDetailFragment : Fragment() {
         }
 
         var moreButton = rootView.findViewById<Button>(R.id.more_button)
-
         moreButton.setOnClickListener(moreButtonClickListener)
         return rootView
     }
 
+    /**
+     * click listener
+     */
     val moreButtonClickListener = View.OnClickListener { view ->
         when(view?.id){
             R.id.more_button -> showBrowserActivity()

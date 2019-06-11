@@ -5,6 +5,9 @@
 
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <dist:module dist:instant="true"/>
 
     <application
@@ -15,7 +18,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name="com.param.tinynews.ItemListActivity"
+                android:name="com.param.tinynews.MainActivity"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,11 +30,11 @@
         <activity
                 android:name="com.param.tinynews.ItemDetailActivity"
                 android:label="@string/title_item_detail"
-                android:parentActivityName="com.param.tinynews.ItemListActivity"
+                android:parentActivityName="com.param.tinynews.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.param.tinynews.ItemListActivity"/>
+                    android:value="com.param.tinynews.MainActivity"/>
         </activity>
     </application>
 

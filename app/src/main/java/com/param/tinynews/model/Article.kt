@@ -3,6 +3,7 @@ package com.param.tinynews.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+
 class Article {
 
     @SerializedName("source")

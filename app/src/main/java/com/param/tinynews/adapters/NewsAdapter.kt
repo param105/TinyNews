@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.param.tinynews.ItemDetailActivity
 import com.param.tinynews.ItemDetailFragment
-import com.param.tinynews.ItemListActivity
+import com.param.tinynews.MainActivity
 import com.param.tinynews.R
 import com.param.tinynews.model.NewsModelRecycler
 import com.squareup.picasso.Picasso
@@ -20,7 +20,7 @@ import java.util.ArrayList
 
 
 class NewsAdapter(ctx: Context,
-                  private val parentActivity: ItemListActivity,
+                  private val parentActivity: MainActivity,
                   private val twoPane: Boolean = false ,
                   private val dataDataModelArrayList: ArrayList<NewsModelRecycler.NewsDataModel>) :
 
